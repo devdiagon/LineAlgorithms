@@ -53,7 +53,6 @@ namespace Tarea1P2.Forms
 
                 int delay = int.Parse(trbVel.Value.ToString());
                 await ObjBres.DrawLine(picCanvas, delay);
-                return;
             }
         }
     }

@@ -12,25 +12,22 @@ namespace Tarea1P2.Algorithms
     {
         public int r { get; private set; }
         public List<Point> totPixels { get; private set; }
-        private Graphics graphics;
 
         public FloodFill()
         {
             ResetValues();
         }
 
-        public void FillFigure(Bitmap bmp, int x, int y, Color targetColor, Color newColor)
+        public async Task FillFigure(PictureBox picCanvas, Bitmap bmp, Point origin, Color targetColor, Color newColor, int delay, DataGridView table)
         {
             totPixels.Clear();
+            table.Rows.Clear();
 
-            graphics = Graphics.FromImage(bmp);
-            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
-            if (x < 0 || y < 0 || x >= bmp.Width || y >= bmp.Height)
+            if (origin.X < 0 || origin.Y < 0 || origin.X >= bmp.Width || origin.Y >= bmp.Height)
                 return;
 
             Stack<Point> stack = new Stack<Point>();
-            stack.Push(new Point(x, y));
+            stack.Push(origin);
 
             while (stack.Count > 0)
             {
@@ -43,7 +40,12 @@ namespace Tarea1P2.Algorithms
                     continue;
 
                 bmp.SetPixel(p.X, p.Y, newColor);
+
                 totPixels.Add(p);
+                table.Rows.Add(p.X, p.Y);
+
+                picCanvas.Invalidate();
+                await Task.Delay(delay);
 
                 stack.Push(new Point(p.X + 1, p.Y));
                 stack.Push(new Point(p.X - 1, p.Y));
@@ -55,16 +57,7 @@ namespace Tarea1P2.Algorithms
         private void ResetValues()
         {
             totPixels = new List<Point>();
-            graphics = null;
-        }
-
-        public void SetDGVPoints(DataGridView table)
-        {
-            table.Rows.Clear();
-            foreach (Point p in totPixels)
-            {
-                table.Rows.Add(p.X, p.Y);
-            }
+            r = 0;
         }
 
         public bool ReadData(TextBox txtInputRadius, Bitmap canvas, Point center)
@@ -79,7 +72,7 @@ namespace Tarea1P2.Algorithms
                     return false;
                 }
 
-                graphics = Graphics.FromImage(canvas);
+                Graphics graphics = Graphics.FromImage(canvas);
                 graphics.Clear(Color.White);
                 graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
@@ -102,7 +95,7 @@ namespace Tarea1P2.Algorithms
             ResetValues();
 
             txtInputRadius.Text = "";
-            trbVel.Value = 1;
+            trbVel.Value = 0;
 
             picCanvas.Image = null;
 

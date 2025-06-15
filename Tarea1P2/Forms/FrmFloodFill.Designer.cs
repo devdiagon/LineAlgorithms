@@ -160,12 +160,10 @@
             // trbVel
             // 
             this.trbVel.Location = new System.Drawing.Point(17, 36);
-            this.trbVel.Maximum = 5;
-            this.trbVel.Minimum = 1;
+            this.trbVel.Maximum = 3;
             this.trbVel.Name = "trbVel";
             this.trbVel.Size = new System.Drawing.Size(202, 56);
             this.trbVel.TabIndex = 2;
-            this.trbVel.Value = 1;
             this.trbVel.Scroll += new System.EventHandler(this.velocityScroll);
             // 
             // dgvPoints
@@ -212,7 +210,7 @@
             this.lblVelValue.Name = "lblVelValue";
             this.lblVelValue.Size = new System.Drawing.Size(46, 20);
             this.lblVelValue.TabIndex = 3;
-            this.lblVelValue.Text = "1 ms";
+            this.lblVelValue.Text = "0 ms";
             // 
             // FrmFloodFill
             // 

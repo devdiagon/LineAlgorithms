@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -50,38 +51,44 @@ namespace Tarea1P2.Forms
         private void btnReset_Click(object sender, EventArgs e)
         {
             ObjFlood.InitializeData(txtInRadius, trbVel, picCanvas, dgvPoints);
-            lblVelValue.Text = "1 ms";
+            lblVelValue.Text = "0 ms";
             generatedCircle = false;
             painted = false;
         }
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
+            painted = false;
             generatedCircle = ObjFlood.ReadData(txtInRadius, canvas, center);
             picCanvas.Image = canvas;
         }
 
-        private void picCanvas_MouseClick(object sender, MouseEventArgs e)
+        private async void picCanvas_MouseClick(object sender, MouseEventArgs e)
         {
-            if (generatedCircle)
-            {
-                if (InsideCircle(e.Location) && !painted)
-                {
-                    Color target = canvas.GetPixel(e.X, e.Y);
-                    ObjFlood.FillFigure(canvas, e.X, e.Y, target, Color.Green);
-                    picCanvas.Refresh();
-                    ObjFlood.SetDGVPoints(dgvPoints);
-                    painted = true;
-                }
-                else
-                {
-                    MessageBox.Show("Punto de inicio fuera del círculo", "Mensaje de error");
-                }
-            }
-            else
+            if (!generatedCircle)
             {
                 MessageBox.Show("Debe generar un círculo primero", "Mensaje de error");
-            }  
+                return;
+            }
+
+            if (!InsideCircle(e.Location))
+            {
+                MessageBox.Show("Punto de inicio fuera del círculo", "Mensaje de error");
+                return;
+            }
+
+            if (painted)
+            {
+                MessageBox.Show("Cree otro círculo para volver a pintar", "Mensaje de error");
+                return;
+            }
+
+            int delay = int.Parse(trbVel.Value.ToString());
+            Color target = canvas.GetPixel(e.X, e.Y);
+            Point origin = new Point(e.X, e.Y);
+
+            await ObjFlood.FillFigure(picCanvas, canvas, origin, target, Color.Green, delay, dgvPoints);
+            painted = true;
         }
 
         private bool InsideCircle(Point point)
