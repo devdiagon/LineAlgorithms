@@ -41,5 +41,11 @@ namespace Tarea1P2
             FrmBresenham frmBresenham = FrmBresenham.GetInstance();
             placeForm(frmBresenham);
         }
+
+        private void circuloBresenhamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCircle frmCircle = FrmCircle.GetInstance();
+            placeForm(frmCircle);
+        }
     }
 }

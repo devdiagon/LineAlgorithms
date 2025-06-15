@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\BresCircle.cs" />
     <Compile Include="Algorithms\Bresenham.cs" />
     <Compile Include="Algorithms\DDA.cs" />
     <Compile Include="Forms\FrmBresenham.cs">
@@ -53,6 +54,12 @@
     </Compile>
     <Compile Include="Forms\FrmBresenham.Designer.cs">
       <DependentUpon>FrmBresenham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmCircle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCircle.Designer.cs">
+      <DependentUpon>FrmCircle.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmDDA.cs">
       <SubType>Form</SubType>
@@ -70,6 +77,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\FrmBresenham.resx">
       <DependentUpon>FrmBresenham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCircle.resx">
+      <DependentUpon>FrmCircle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmDDA.resx">
       <DependentUpon>FrmDDA.cs</DependentUpon>

@@ -71,6 +71,7 @@
             this.circuloBresenhamToolStripMenuItem.Name = "circuloBresenhamToolStripMenuItem";
             this.circuloBresenhamToolStripMenuItem.Size = new System.Drawing.Size(218, 72);
             this.circuloBresenhamToolStripMenuItem.Text = "Circulo Bresenham";
+            this.circuloBresenhamToolStripMenuItem.Click += new System.EventHandler(this.circuloBresenhamToolStripMenuItem_Click);
             // 
             // floodFillToolStripMenuItem
             // 
