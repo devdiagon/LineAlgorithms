@@ -35,5 +35,11 @@ namespace Tarea1P2
             FrmDDA frmDDA = FrmDDA.GetInstance();
             placeForm(frmDDA);
         }
+
+        private void bresenhamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmBresenham frmBresenham = FrmBresenham.GetInstance();
+            placeForm(frmBresenham);
+        }
     }
 }

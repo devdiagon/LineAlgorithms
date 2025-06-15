@@ -8,30 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tarea1P2.Algorithms;
-using static System.Windows.Forms.MonthCalendar;
 
 namespace Tarea1P2.Forms
 {
-    public partial class FrmDDA : Form
+    public partial class FrmBresenham : Form
     {
-        private DDA ObjDAA = new DDA();
-        private static FrmDDA instance;
+        private Bresenham ObjBres = new Bresenham();
+        private static FrmBresenham instance;
 
-        public static FrmDDA GetInstance()
+        public static FrmBresenham GetInstance()
         {
             if (instance == null || instance.IsDisposed)
             {
-                instance = new FrmDDA();
+                instance = new FrmBresenham();
             }
             return instance;
         }
-        private FrmDDA()
+        private FrmBresenham()
         {
             InitializeComponent();
             dgvPoints.Columns.Add("X", "X");
             dgvPoints.Columns.Add("Y", "Y");
         }
-
 
         private void velocityScroll(object sender, EventArgs e)
         {
@@ -42,19 +40,19 @@ namespace Tarea1P2.Forms
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            ObjDAA.InitializeData(txtInXi, txtInYi, txtInXf, txtInYf, trbVel, picCanvas, dgvPoints);
+            ObjBres.InitializeData(txtInXi, txtInYi, txtInXf, txtInYf, trbVel, picCanvas, dgvPoints);
             lblVelValue.Text = "50 ms";
         }
 
         private async void btnCalculate_Click(object sender, EventArgs e)
         {
-            bool validInput = ObjDAA.ReadData(txtInXi, txtInXf, txtInYi, txtInYf);
+            bool validInput = ObjBres.ReadData(txtInXi, txtInXf, txtInYi, txtInYf);
             if (validInput)
             {
-                ObjDAA.SetDGVPoints(dgvPoints);
+                ObjBres.SetDGVPoints(dgvPoints);
 
                 int delay = int.Parse(trbVel.Value.ToString());
-                await ObjDAA.DrawLine(picCanvas, delay);
+                await ObjBres.DrawLine(picCanvas, delay);
                 return;
             }
         }

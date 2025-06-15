@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.mnsNav = new System.Windows.Forms.MenuStrip();
-            this.pnlWrapper = new System.Windows.Forms.Panel();
             this.dDAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bresenhamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.circuloBresenhamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.floodFillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlWrapper = new System.Windows.Forms.Panel();
             this.mnsNav.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,14 +52,6 @@
             this.mnsNav.TabIndex = 0;
             this.mnsNav.Text = "menuStrip1";
             // 
-            // pnlWrapper
-            // 
-            this.pnlWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlWrapper.Location = new System.Drawing.Point(0, 76);
-            this.pnlWrapper.Name = "pnlWrapper";
-            this.pnlWrapper.Size = new System.Drawing.Size(1102, 563);
-            this.pnlWrapper.TabIndex = 1;
-            // 
             // dDAToolStripMenuItem
             // 
             this.dDAToolStripMenuItem.Name = "dDAToolStripMenuItem";
@@ -72,6 +64,7 @@
             this.bresenhamToolStripMenuItem.Name = "bresenhamToolStripMenuItem";
             this.bresenhamToolStripMenuItem.Size = new System.Drawing.Size(150, 72);
             this.bresenhamToolStripMenuItem.Text = "Bresenham";
+            this.bresenhamToolStripMenuItem.Click += new System.EventHandler(this.bresenhamToolStripMenuItem_Click);
             // 
             // circuloBresenhamToolStripMenuItem
             // 
@@ -84,6 +77,14 @@
             this.floodFillToolStripMenuItem.Name = "floodFillToolStripMenuItem";
             this.floodFillToolStripMenuItem.Size = new System.Drawing.Size(122, 72);
             this.floodFillToolStripMenuItem.Text = "Flood Fill";
+            // 
+            // pnlWrapper
+            // 
+            this.pnlWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlWrapper.Location = new System.Drawing.Point(0, 76);
+            this.pnlWrapper.Name = "pnlWrapper";
+            this.pnlWrapper.Size = new System.Drawing.Size(1102, 563);
+            this.pnlWrapper.TabIndex = 1;
             // 
             // FrmHome
             // 

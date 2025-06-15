@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Tarea1P2.Algorithms
 {
-    internal class DDA
+    internal class Bresenham
     {
         private Point puntoI;
         private Point puntoF;
@@ -17,7 +17,7 @@ namespace Tarea1P2.Algorithms
         private float k;
         private Graphics graphics;
 
-        public DDA() 
+        public Bresenham()
         {
             ResetValues();
         }
@@ -36,38 +36,40 @@ namespace Tarea1P2.Algorithms
             int dx = puntoF.X - puntoI.X;
             int dy = puntoF.Y - puntoI.Y;
 
-            m = (float) dy / dx;
+            m = (float)dy / dx;
             k = Math.Max(Math.Abs(dx), Math.Abs(dy));
 
-            float xStep = 1;
-            float yStep = 1;
+            int pPrev = 0;
 
-            if (dx == 0)
+            if (Math.Abs(m) > 1)
             {
-                xStep = 0;
-                yStep = Math.Sign(dy);
+                dy *= -1;
+                pPrev = 2 * dx - dy;
+            }
+            else
+            {
+                pPrev = 2 * dy - dx;
             }
 
-            if (m > 1)
-            {
-                xStep = 1 / m;
-            }
-
-            if(m < 1)
-            {
-                yStep = m;
-            }
-
-            float xPrev = puntoI.X;
-            float yPrev = puntoI.Y;
+            int xPrev = puntoI.X;
+            int yPrev = puntoI.Y;
 
             for (int i = 0; i <= k; i++)
             {
-                Point pk = new Point((int)Math.Round(xPrev), (int)Math.Round(yPrev));
+                Point pk = new Point(xPrev, yPrev);
                 totalPoints.Add(pk);
 
-                xPrev += xStep;
-                yPrev += yStep;
+                xPrev += 1;
+
+                if (pPrev < 0)
+                {
+                    pPrev += 2 * dy;
+                }
+                else
+                {
+                    yPrev += 1;
+                    pPrev += 2 * dy - 2 * dx;
+                }
             }
         }
 
@@ -83,7 +85,7 @@ namespace Tarea1P2.Algorithms
                 int y = totalPoints[i].Y;
                 if (x >= 0 && x < bmp.Width && y >= 0 && y < bmp.Height)
                 {
-                    bmp.SetPixel(totalPoints[i].X, totalPoints[i].Y, Color.Red);
+                    bmp.SetPixel(totalPoints[i].X, totalPoints[i].Y, Color.Blue);
                     picCanvas.Image = (Bitmap)bmp.Clone();
                     await Task.Delay(delay);
                 }
@@ -110,7 +112,7 @@ namespace Tarea1P2.Algorithms
                 int yi = int.Parse(txtInputYi.Text);
                 int yf = int.Parse(txtInputYf.Text);
 
-                if(xi < 0 || xf < 0 || yi < 0 || yf < 0)
+                if (xi < 0 || xf < 0 || yi < 0 || yf < 0)
                 {
                     MessageBox.Show("Ninguna de las coordenadas puede ser negativa", "Mensaje de error");
                     return false;
