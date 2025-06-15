@@ -47,5 +47,11 @@ namespace Tarea1P2
             FrmCircle frmCircle = FrmCircle.GetInstance();
             placeForm(frmCircle);
         }
+
+        private void floodFillToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmFloodFill frmFloodFill = FrmFloodFill.GetInstance();
+            placeForm(frmFloodFill);
+        }
     }
 }

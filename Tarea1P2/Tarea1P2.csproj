@@ -49,6 +49,7 @@
     <Compile Include="Algorithms\BresCircle.cs" />
     <Compile Include="Algorithms\Bresenham.cs" />
     <Compile Include="Algorithms\DDA.cs" />
+    <Compile Include="Algorithms\FloodFill.cs" />
     <Compile Include="Forms\FrmBresenham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +68,12 @@
     <Compile Include="Forms\FrmDDA.Designer.cs">
       <DependentUpon>FrmDDA.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmFloodFill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmFloodFill.Designer.cs">
+      <DependentUpon>FrmFloodFill.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmDDA.resx">
       <DependentUpon>FrmDDA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmFloodFill.resx">
+      <DependentUpon>FrmFloodFill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHome.resx">
       <DependentUpon>FrmHome.cs</DependentUpon>

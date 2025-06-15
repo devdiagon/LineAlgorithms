@@ -78,6 +78,7 @@
             this.floodFillToolStripMenuItem.Name = "floodFillToolStripMenuItem";
             this.floodFillToolStripMenuItem.Size = new System.Drawing.Size(122, 72);
             this.floodFillToolStripMenuItem.Text = "Flood Fill";
+            this.floodFillToolStripMenuItem.Click += new System.EventHandler(this.floodFillToolStripMenuItem_Click);
             // 
             // pnlWrapper
             // 
