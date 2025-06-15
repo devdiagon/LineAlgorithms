@@ -16,6 +16,8 @@ namespace Tarea1P2
         public FrmHome()
         {
             InitializeComponent();
+            FrmDDA frmDDA = FrmDDA.GetInstance();
+            placeForm(frmDDA);
         }
 
         private void placeForm(Form formulario)

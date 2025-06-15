@@ -152,6 +152,7 @@
             this.btnCalculate.TabIndex = 0;
             this.btnCalculate.Text = "Calcular";
             this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // btnReset
             // 
@@ -167,19 +168,23 @@
             // trbVel
             // 
             this.trbVel.Location = new System.Drawing.Point(17, 36);
-            this.trbVel.Maximum = 500;
-            this.trbVel.Minimum = 100;
+            this.trbVel.Maximum = 250;
+            this.trbVel.Minimum = 50;
             this.trbVel.Name = "trbVel";
             this.trbVel.Size = new System.Drawing.Size(202, 56);
             this.trbVel.TabIndex = 2;
-            this.trbVel.Value = 100;
+            this.trbVel.Value = 50;
             this.trbVel.Scroll += new System.EventHandler(this.velocityScroll);
             // 
             // dgvPoints
             // 
+            this.dgvPoints.AllowUserToAddRows = false;
+            this.dgvPoints.AllowUserToDeleteRows = false;
             this.dgvPoints.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPoints.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dgvPoints.Location = new System.Drawing.Point(12, 374);
             this.dgvPoints.Name = "dgvPoints";
+            this.dgvPoints.ReadOnly = true;
             this.dgvPoints.RowHeadersWidth = 51;
             this.dgvPoints.RowTemplate.Height = 24;
             this.dgvPoints.Size = new System.Drawing.Size(395, 170);
@@ -241,7 +246,7 @@
             this.grbVel.Size = new System.Drawing.Size(237, 118);
             this.grbVel.TabIndex = 5;
             this.grbVel.TabStop = false;
-            this.grbVel.Text = "Velocidad";
+            this.grbVel.Text = "Retraso";
             // 
             // lblVelValue
             // 
@@ -249,9 +254,9 @@
             this.lblVelValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVelValue.Location = new System.Drawing.Point(84, 84);
             this.lblVelValue.Name = "lblVelValue";
-            this.lblVelValue.Size = new System.Drawing.Size(64, 20);
+            this.lblVelValue.Size = new System.Drawing.Size(55, 20);
             this.lblVelValue.TabIndex = 3;
-            this.lblVelValue.Text = "100 ms";
+            this.lblVelValue.Text = "50 ms";
             // 
             // FrmDDA
             // 
